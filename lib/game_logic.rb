@@ -7,15 +7,6 @@ module GameLogic
     @master_code = rand(1111..6666).digits.to_a
   end
 
-  def convert_user_guess(guess)
-    @user_guess_array = guess.delete(' ').to_i.digits.to_a.reverse
-  end
-
-  def valid_input?(guess)
-    convert_user_guess(guess)
-    user_guess_array.length == 4 && user_guess_array.all? { |number| number.is_a?(Integer) }
-  end
-
   def generate_clue(user_guess)
     return unless valid_input?(user_guess)
 
@@ -24,12 +15,13 @@ module GameLogic
     shuffle_clues
   end
 
-  def compare_clue_digits
-    user_guess_array.each_with_index do |number, index|
-      if master_code.include? number
-        user_guess_array[index] == master_code[index] ? return_clues.push('$') : return_clues.push('?')
-      end
-    end
+  def valid_input?(user_guess)
+    convert_user_guess(user_guess)
+    user_guess_array.length == 4 && user_guess_array.all? { |number| number.is_a?(Integer) }
+  end
+
+  def convert_user_guess(user_guess)
+    @user_guess_array = user_guess.delete(' ').to_i.digits.to_a.reverse
   end
 
   def clear_clues
@@ -39,6 +31,14 @@ module GameLogic
     end
 
     return_clues.clear
+  end
+
+  def compare_clue_digits
+    user_guess_array.each_with_index do |number, index|
+      if master_code.include? number
+        user_guess_array[index] == master_code[index] ? return_clues.push('$') : return_clues.push('?')
+      end
+    end
   end
 
   def shuffle_clues
