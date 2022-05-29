@@ -1,11 +1,11 @@
 # rubocop:disable Metrics/AbcSize
 
-require_relative './lib/game_rules.rb'
+require_relative './lib/game_instructions.rb'
 
 class Mastermind
-  include GameRules
+  include GameInstructions
   def initialize
-    display_rules
+   display_instructions
   end
 end
 
