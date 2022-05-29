@@ -1,5 +1,3 @@
-# rubocop:disable Metrics/AbcSize
-
 class Game
   include GameInstructions
 
