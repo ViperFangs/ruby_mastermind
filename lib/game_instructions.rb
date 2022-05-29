@@ -3,20 +3,20 @@ module GameInstructions
   def display_instructions
     puts <<~HEREDOC
 
-      How to play Mastermind:
+      Mastermind Game Rules:
 
       This is a 1-player game against the computer. You can choose to be the Code Maker or Code Breaker.
 
       There are six different color combinations:
-      red = 1
-      green = 2
-      blue = 3
-      yellow = 4
-      cyan = 5
-      purple = 6
+      Red = 1
+      Green = 2
+      Blue = 3
+      Yellow = 4
+      Cyan = 5
+      Purple = 6
 
       The code maker will choose four to create a 'master code'. For example,
-      red, blue, green, red can be typed as 1 3 2 1
+      'Red, Blue, Green, Red' can be typed as: '1 3 2 1' (Without the '')
 
       As you can see, there can be more then one of the same color.
       In order to win, the code breaker needs to guess the 'master code' in 12 or less turns.
@@ -33,8 +33,7 @@ module GameInstructions
 
       The guess had 1 correct number in the correct location and 2 correct numbers in a wrong location.
 
-      Would you like to be the MAKER or BREAKER?
-
+      Pick Your Poison:
       Type '1' to be the MAKER
       Type '2' to be the BREAKER
     HEREDOC
@@ -42,12 +41,12 @@ module GameInstructions
 
   def display_color_numbers
     puts <<~HEREDOC
-      red = 1
-      green = 2
-      blue = 3
-      yellow = 4
-      cyan = 5
-      purple = 6
+      Red = 1
+      Green = 2
+      Blue = 3
+      Yellow = 4
+      Cyan = 5
+      Purple = 6
     HEREDOC
   end
 end
