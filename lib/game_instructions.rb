@@ -16,7 +16,7 @@ module GameInstructions
         Purple = 6
 
       The code maker will choose four to create a 'master code'. For example,
-      'Red, Blue, Green, Red' can be typed as: '1 3 2 1' (Without the '')
+        'Red, Blue, Green, Red' can be typed as: '1 3 2 1' (Without the '')
 
       As you can see, there can be more then one of the same color.
       In order to win, the code breaker needs to guess the 'master code' in 12 or less turns.
