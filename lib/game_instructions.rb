@@ -39,4 +39,15 @@ module GameInstructions
       Type '2' to be the BREAKER
     HEREDOC
   end
+
+  def display_color_numbers
+    puts <<~HEREDOC
+      red = 1
+      green = 2
+      blue = 3
+      yellow = 4
+      cyan = 5
+      purple = 6
+    HEREDOC
+  end
 end
