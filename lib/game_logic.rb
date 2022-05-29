@@ -5,9 +5,12 @@ module GameLogic
 
   private
 
+  MASTER_CODE_LENGTH = 4
+
   def generate_master_code
     @master_code = []
-    4.times { @master_code.push(rand(1..6)) }
+    
+    MASTER_CODE_LENGTH.times { @master_code.push(rand(1..6)) }
   end
 
   def generate_clue(user_guess)
@@ -20,7 +23,7 @@ module GameLogic
 
   def valid_input?(user_guess)
     convert_user_guess(user_guess)
-    user_guess_array.length == 4 && user_guess_array.all? { |number| number.is_a?(Integer) }
+    user_guess_array.length == MASTER_CODE_LENGTH && user_guess_array.all? { |number| number.is_a?(Integer) }
   end
 
   def convert_user_guess(user_guess)
