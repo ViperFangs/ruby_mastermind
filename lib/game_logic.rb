@@ -20,6 +20,22 @@ class GameLogic
   def generate_clue(user_guess)
     return unless valid_input?(user_guess)
   end
+
+  def compare_clue_digits
+    user_guess_array.each_with_index do |number, index|
+      if master_code.include? number
+        user_guess_array[index] == master_code[index] ? return_clues.push('$') : return_clues.push('?')
+      end
+    end
+  end
+
+  def clear_clues
+    return_clues.clear
+  end
+
+  def shuffle_clues
+    return_clues.shuffle
+  end
 end
 
 GameLogic.new.generate_master_code
