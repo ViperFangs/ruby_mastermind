@@ -1,13 +1,15 @@
 # GameLogic handles generation of a random number between 1111..6666. It returns clues after every guess
+# Change to module later
 class GameLogic
-  attr_accessor :return_clues, :user_guess_array, :master_code
+  attr_accessor :return_clues
+  attr_reader :master_code, :user_guess_array
 
   def generate_master_code
-    self.master_code = rand(1111..6666).digits.to_a
+    @master_code = rand(1111..6666).digits.to_a
   end
 
   def convert_user_guess(guess)
-    self.user_guess_array = guess.delete(' ').to_i.digits.to_a
+    @user_guess_array = guess.delete(' ').to_i.digits.to_a
   end
 
   def valid_input?(guess)
