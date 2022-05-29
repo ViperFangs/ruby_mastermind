@@ -1,9 +1,7 @@
-# rubocop:disable Metrics/MethodLength
-
 # module GameInstructions contains display instructions for the game
 module GameInstructions
   def display_instructions
-    <<~HEREDOC
+    puts <<~HEREDOC
 
       How to play Mastermind:
 
@@ -42,5 +40,3 @@ module GameInstructions
     HEREDOC
   end
 end
-
-# rubocop:enable Metrics/MethodLength
