@@ -1,4 +1,4 @@
-# GameLogic handles generation of a random number between 1111..6666. It also return clues after every guess
+# GameLogic handles generation of a random number between 1111..6666. It returns clues after every guess
 class GameLogic
   attr_accessor :return_clues, :user_guess_array, :master_code
 
