@@ -3,12 +3,15 @@ module GameLogic
   attr_accessor :return_clues
   attr_reader :master_code, :user_guess_array
 
+  private
+
   def generate_master_code
-    @master_code = rand(1111..6666).digits.to_a
+    @master_code = []
+    4.times { @master_code.push(rand(1..6)) }
   end
 
   def generate_clue(user_guess)
-    return unless valid_input?(user_guess)
+    return false unless valid_input?(user_guess)
 
     clear_clues
     compare_clue_digits
