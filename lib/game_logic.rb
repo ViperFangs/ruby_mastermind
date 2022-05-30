@@ -4,8 +4,8 @@
 module GameLogic
   private
 
-  attr_accessor :return_clues, :current_guess
-  attr_reader :master_code, :user_guess_array
+  attr_accessor :return_clues, :current_guess, :current_clue, :user_guess_array
+  attr_reader :master_code
 
   MASTER_CODE_LENGTH = 4
 
@@ -25,11 +25,11 @@ module GameLogic
 
   def valid_input?(user_guess)
     convert_user_guess(user_guess)
-    user_guess_array.length == MASTER_CODE_LENGTH && user_guess_array.all? { |number| number.is_a?(Integer) }
+    user_guess_array.length == MASTER_CODE_LENGTH && user_guess_array.all? { |number| number.is_a?(Integer)}
   end
 
   def convert_user_guess(user_guess)
-    @user_guess_array = user_guess.delete(' ').to_i.digits.to_a.reverse
+    self.user_guess_array = user_guess.delete(' ').to_i.digits.to_a.reverse
   end
 
   def clear_clues
@@ -51,5 +51,9 @@ module GameLogic
 
   def shuffle_clues
     return_clues.shuffle
+  end
+
+  def winner?
+    user_guess_array == master_code
   end
 end
