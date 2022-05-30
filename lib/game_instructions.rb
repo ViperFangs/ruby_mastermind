@@ -54,18 +54,4 @@ module GameInstructions
 
     HEREDOC
   end
-
-  def instruction_screen
-    puts display_instructions
-    until valid_gameplay_choice?
-      print 'Choose your Gameplay Style: '
-      @user_gameplay_choice = gets.chomp.to_i
-    end
-
-    system('clear')
-  end
-
-  def valid_gameplay_choice?
-    user_gameplay_choice == 1 || user_gameplay_choice == 2
-  end
 end
