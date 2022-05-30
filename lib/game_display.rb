@@ -33,29 +33,47 @@ module GameDisplay
   def breaker_game_content
     puts display_color_numbers
     puts 'The Computer has decided the Master Code'
-    puts 'Enter your guess and the computer will reveal a clue'
-    puts "Example Guess: Type \'1 3 5 2\' without the \'\' for \'Red Blue Cyan Green\'"
   end
 
   def breaker_game_loop
     until available_moves.zero? || winner?
+      system('clear')
+      puts display_color_numbers
+
+      puts if display_guess_clue_array
+      display_available_moves
+      puts
+
       input_current_guess
       generate_current_clue
       display_current_clue
       return if display_winner_if_won
 
-      display_available_moves
+    end
+  end
+
+  def display_guess_clue_array
+    return false if guess_clue_array.nil?
+
+    guess_clue_array.each do |hash|
+      hash.each do |key, value|
+        print "#{key}: #{value}\t\t"
+      end
+
+      puts
     end
   end
 
   def input_current_guess
-    print "\nYour Guess: "
+    puts 'Enter your guess and the computer will reveal a clue'
+    puts "Example Guess: Type \'1 3 5 2\' without the \'\' for \'Red Blue Cyan Green\'"
+    print "\nEnter your Guess: "
     self.current_guess = gets.chomp
 
     until valid_input?(current_guess)
       p master_code
-      incorrect_input
-      print "\nYour Guess: "
+      display_incorrect_input
+      print "\nEnter your guess: "
       self.current_guess = gets.chomp
     end
   end
