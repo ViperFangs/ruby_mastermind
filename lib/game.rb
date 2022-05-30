@@ -2,11 +2,13 @@
 
 require_relative './game_instructions'
 require_relative './game_logic'
+require_relative './game_display'
 
 # Game class calls different methods to display the mastermind game
 class Game
   include GameInstructions
   include GameLogic
+  include GameDisplay
 
   attr_accessor :user_gameplay_choice, :available_moves
 
@@ -22,13 +24,4 @@ class Game
     game_screen
   end
 
-  def game_screen
-    puts display_color_numbers
-    case user_gameplay_choice
-    when 1
-      # maker_gameplay
-    when 2
-      breaker_gameplay
-    end
-  end
 end
