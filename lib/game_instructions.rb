@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # module GameInstructions contains display instructions for the game
 module GameInstructions
   def display_instructions
@@ -66,5 +68,4 @@ module GameInstructions
   def valid_gameplay_choice?
     user_gameplay_choice == 1 || user_gameplay_choice == 2
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './game_instructions'
 require_relative './game_logic'
 
@@ -22,9 +24,10 @@ class Game
 
   def game_screen
     puts display_color_numbers
-    if user_gameplay_choice == 1
+    case user_gameplay_choice
+    when 1
       # maker_gameplay
-    elsif user_gameplay_choice == 2
+    when 2
       breaker_gameplay
     end
   end

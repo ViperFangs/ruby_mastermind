@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # GameLogic handles generation of a random number between 1111..6666. It returns clues after every guess
 module GameLogic
   private
