@@ -23,4 +23,29 @@ module GameDisplay
       breaker_gameplay
     end
   end
+
+  def breaker_gameplay
+    puts "The Computer has decided the Master Code"
+    puts "Enter your guess and the computer will reveal a clue"
+    puts "Example Guess: Type \'1 3 5 2\' without the \'\' for \'Red Blue Cyan Green\'"
+    get_current_guess
+  end
+
+  def get_current_guess
+    print "\nYour Guess: "
+    self.current_guess = gets.chomp
+
+    until valid_input? (current_guess)
+      incorrect_input
+      print "\nYour Guess: "
+      self.current_guess = gets.chomp
+    end 
+
+    puts "Clues: #{generate_clue(current_guess)}"
+  end
+
+  def incorrect_input
+    puts "Please enter a valid input"
+  end
+
 end
