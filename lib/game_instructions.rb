@@ -54,4 +54,8 @@ module GameInstructions
 
     HEREDOC
   end
+
+  def incorrect_input
+    puts "\nPlease enter a valid input"
+  end
 end

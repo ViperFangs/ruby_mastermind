@@ -56,10 +56,7 @@ module GameDisplay
 
     puts "Clues: #{current_clue}"
     self.available_moves -= 1
-  end
-
-  def incorrect_input
-    puts "\nPlease enter a valid input"
+    puts "Available Moves: #{available_moves}"
   end
 
 end
