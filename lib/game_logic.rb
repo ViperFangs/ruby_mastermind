@@ -4,7 +4,7 @@
 module GameLogic
   private
 
-  attr_accessor :return_clues, :current_guess, :current_clue, :user_guess_array
+  attr_accessor :return_clues, :current_guess, :current_clue, :user_guess_array, :guess_clue_array, :available_moves
   attr_reader :master_code
 
   MASTER_CODE_LENGTH = 4
@@ -20,7 +20,8 @@ module GameLogic
 
     clear_clues
     compare_clue_digits
-    shuffle_clues
+    self.current_clue = shuffle_clues
+    guess_clue_array << { Guess: current_guess.to_s, Clue: current_clue.to_s }
   end
 
   def valid_input?(user_guess)
