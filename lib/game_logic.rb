@@ -4,7 +4,8 @@
 module GameLogic
   private
 
-  attr_accessor :return_clues, :current_guess, :current_clue, :user_guess_array, :guess_clue_array, :available_moves
+  attr_accessor :return_clues, :current_guess, :current_clue, :user_guess_array, :guess_clue_array, :available_moves,
+                :missed_array, :modified_guess_array
   attr_reader :master_code
 
   MASTER_CODE_LENGTH = 4
@@ -21,7 +22,8 @@ module GameLogic
     clear_clues
     compare_clue_digits
     self.current_clue = shuffle_clues
-    guess_clue_array << { Guess: current_guess.to_s, Clue: current_clue.to_s }
+    guess_clue_array << { 'Guess' => user_guess_array.to_s, 'Clue' => current_clue.to_s }
+    current_clue
   end
 
   def valid_input?(user_guess)
@@ -43,9 +45,27 @@ module GameLogic
   end
 
   def compare_clue_digits
-    user_guess_array.each_with_index do |number, index|
-      if master_code.include? number
-        user_guess_array[index] == master_code[index] ? return_clues.push('$') : return_clues.push('?')
+    self.missed_array = []
+    self.modified_guess_array = user_guess_array[0..user_guess_array.length]
+    clue_handler
+    missed_array_handler
+  end
+
+  def clue_handler
+    master_code.each_with_index do |number, index|
+      if user_guess_array[index] == master_code[index]
+        return_clues.push('$')
+      else
+        missed_array.push(number)
+      end
+    end
+  end
+
+  def missed_array_handler
+    missed_array.each do |number|
+      if modified_guess_array.include? number
+        return_clues.push('?')
+        modified_guess_array.delete_at(modified_guess_array.find_index(number))
       end
     end
   end
