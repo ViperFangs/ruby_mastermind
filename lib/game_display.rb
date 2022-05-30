@@ -27,7 +27,7 @@ module GameDisplay
 
   def breaker_gameplay
     breaker_game_content
-    get_current_guess until available_moves.zero? || winner?
+    breaker_game_loop
   end
 
   def breaker_game_content
@@ -37,7 +37,18 @@ module GameDisplay
     puts "Example Guess: Type \'1 3 5 2\' without the \'\' for \'Red Blue Cyan Green\'"
   end
 
-  def get_current_guess
+  def breaker_game_loop
+    until available_moves.zero? || winner?
+      input_current_guess
+      generate_current_clue
+      display_current_clue
+      return if display_winner_if_won
+
+      display_available_moves
+    end
+  end
+
+  def input_current_guess
     print "\nYour Guess: "
     self.current_guess = gets.chomp
 
@@ -47,18 +58,26 @@ module GameDisplay
       print "\nYour Guess: "
       self.current_guess = gets.chomp
     end
+  end
 
+  def generate_current_clue
     self.current_clue = generate_clue(current_guess)
-
-    puts "Clues: #{current_clue}"
     self.available_moves -= 1
+  end
 
+  def display_current_clue
+    puts "Clues: #{current_clue}"
+  end
+
+  def display_winner_if_won
     if winner?
       puts "\nYOU WON"
       puts "#{current_guess} is the Master Code"
-      return
+      true
     end
+  end
 
+  def display_available_moves
     puts "Available Moves: #{available_moves}"
   end
 end
