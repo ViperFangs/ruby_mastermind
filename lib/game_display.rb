@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # GameDisplay handles what to display on the command line screen
 module GameDisplay
   def instruction_screen
@@ -19,19 +21,19 @@ module GameDisplay
     when 1
       # maker_gameplay
     when 2
-        breaker_gameplay
+      breaker_gameplay
     end
   end
 
   def breaker_gameplay
     breaker_game_content
-    get_current_guess until self.available_moves == 0 || winner?
+    get_current_guess until available_moves.zero? || winner?
   end
 
   def breaker_game_content
     puts display_color_numbers
-    puts "The Computer has decided the Master Code"
-    puts "Enter your guess and the computer will reveal a clue"
+    puts 'The Computer has decided the Master Code'
+    puts 'Enter your guess and the computer will reveal a clue'
     puts "Example Guess: Type \'1 3 5 2\' without the \'\' for \'Red Blue Cyan Green\'"
   end
 
@@ -39,14 +41,17 @@ module GameDisplay
     print "\nYour Guess: "
     self.current_guess = gets.chomp
 
-    until valid_input? (current_guess)
+    until valid_input?(current_guess)
       p master_code
       incorrect_input
-      print "Your Guess: "
+      print "\nYour Guess: "
       self.current_guess = gets.chomp
-    end 
+    end
 
     self.current_clue = generate_clue(current_guess)
+
+    puts "Clues: #{current_clue}"
+    self.available_moves -= 1
 
     if winner?
       puts "\nYOU WON"
@@ -54,9 +59,6 @@ module GameDisplay
       return
     end
 
-    puts "Clues: #{current_clue}"
-    self.available_moves -= 1
     puts "Available Moves: #{available_moves}"
   end
-
 end
