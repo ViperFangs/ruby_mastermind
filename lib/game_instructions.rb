@@ -56,6 +56,6 @@ module GameInstructions
   end
 
   def incorrect_input
-    puts "\nPlease enter a valid input"
+    puts 'Please enter a valid input'
   end
 end

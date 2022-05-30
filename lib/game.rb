@@ -23,5 +23,4 @@ class Game
     instruction_screen
     game_screen
   end
-
 end
