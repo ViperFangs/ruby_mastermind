@@ -88,11 +88,11 @@ module GameDisplay
   end
 
   def display_winner_if_won
-    if winner?
-      puts "\nYOU WON"
-      puts "#{current_guess} is the Master Code"
-      true
-    end
+    return unless winner?
+
+    puts "\nYOU WON"
+    puts "#{current_guess} is the Master Code"
+    true
   end
 
   def display_available_moves
