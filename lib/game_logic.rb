@@ -1,15 +1,15 @@
 # GameLogic handles generation of a random number between 1111..6666. It returns clues after every guess
 module GameLogic
+  private
+
   attr_accessor :return_clues
   attr_reader :master_code, :user_guess_array
-
-  private
 
   MASTER_CODE_LENGTH = 4
 
   def generate_master_code
     @master_code = []
-    
+
     MASTER_CODE_LENGTH.times { @master_code.push(rand(1..6)) }
   end
 
