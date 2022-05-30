@@ -15,20 +15,24 @@ module GameDisplay
   end
 
   def game_screen
-    puts display_color_numbers
     case user_gameplay_choice
     when 1
       # maker_gameplay
     when 2
-      breaker_gameplay
+        breaker_gameplay
     end
   end
 
   def breaker_gameplay
+    breaker_game_content
+    get_current_guess until self.available_moves == 0 || winner?
+  end
+
+  def breaker_game_content
+    puts display_color_numbers
     puts "The Computer has decided the Master Code"
     puts "Enter your guess and the computer will reveal a clue"
     puts "Example Guess: Type \'1 3 5 2\' without the \'\' for \'Red Blue Cyan Green\'"
-    get_current_guess
   end
 
   def get_current_guess
@@ -36,16 +40,26 @@ module GameDisplay
     self.current_guess = gets.chomp
 
     until valid_input? (current_guess)
+      p master_code
       incorrect_input
-      print "\nYour Guess: "
+      print "Your Guess: "
       self.current_guess = gets.chomp
     end 
 
-    puts "Clues: #{generate_clue(current_guess)}"
+    self.current_clue = generate_clue(current_guess)
+
+    if winner?
+      puts "\nYOU WON"
+      puts "#{current_guess} is the Master Code"
+      return
+    end
+
+    puts "Clues: #{current_clue}"
+    self.available_moves -= 1
   end
 
   def incorrect_input
-    puts "Please enter a valid input"
+    puts "\nPlease enter a valid input"
   end
 
 end
