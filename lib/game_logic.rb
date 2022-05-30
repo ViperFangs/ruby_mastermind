@@ -55,6 +55,7 @@ module GameLogic
     master_code.each_with_index do |number, index|
       if user_guess_array[index] == master_code[index]
         return_clues.push('$')
+        modified_guess_array[index] = nil
       else
         missed_array.push(number)
       end
@@ -62,6 +63,10 @@ module GameLogic
   end
 
   def missed_array_handler
+    return if missed_array.nil?
+
+    missed_array.compact!
+
     missed_array.each do |number|
       if modified_guess_array.include? number
         return_clues.push('?')
