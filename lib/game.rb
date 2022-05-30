@@ -10,13 +10,18 @@ class Game
   include GameLogic
   include GameDisplay
 
-  attr_accessor :user_gameplay_choice, :available_moves
+  attr_accessor :user_gameplay_choice
 
   def initialize
     generate_master_code
+    default_values
+    play_mastermind
+  end
+
+  def default_values
     self.user_gameplay_choice = -1
     self.available_moves = 12
-    play_mastermind
+    self.guess_clue_array = []
   end
 
   def play_mastermind
