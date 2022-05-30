@@ -4,7 +4,7 @@
 module GameLogic
   private
 
-  attr_accessor :return_clues
+  attr_accessor :return_clues, :current_guess
   attr_reader :master_code, :user_guess_array
 
   MASTER_CODE_LENGTH = 4
