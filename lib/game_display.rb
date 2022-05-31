@@ -90,8 +90,8 @@ module GameDisplay
   def display_winner_if_won
     return unless winner?
 
-    puts "\nYOU WON"
-    puts "#{current_guess} is the Master Code"
+    puts "\n\nYOU HAVE WON THE GAME"
+    puts "#{master_code.join} is the Master Code"
     true
   end
 
