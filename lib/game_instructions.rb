@@ -10,7 +10,6 @@ module GameInstructions
       This is a 1-player game against the computer. You can choose to be the Code Maker or Code Breaker.
 
       Here are the color codes:
-
       Red = 1\t\t\tYellow = 4
       Green = 2\t\tCyan = 5
       Blue = 3\t\tPurple = 6
@@ -33,17 +32,14 @@ module GameInstructions
       The guess had 1 correct number at the correct location and 2 correct numbers at a wrong location.
 
       When you are ready,
-        Type '1' to be the MAKER
-        Type '2' to be the BREAKER
+      Type '1' to be the MAKER
+      Type '2' to be the BREAKER
 
     HEREDOC
   end
 
   def display_color_numbers
-    "Color Codes:
-    Red = 1\t\tYellow = 4
-    Green = 2\t\tCyan = 5
-    Blue = 3\t\tPurple = 6
+    "Color Codes:\nRed = 1\t\t\tYellow = 4\nGreen = 2\t\tCyan = 5\nBlue = 3\t\tPurple = 6
     "
   end
 
