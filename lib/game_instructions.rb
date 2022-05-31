@@ -43,16 +43,11 @@ module GameInstructions
   end
 
   def display_color_numbers
-    <<~HEREDOC
-      Color Codes:
-        Red = 1
-        Green = 2
-        Blue = 3
-        Yellow = 4
-        Cyan = 5
-        Purple = 6
-
-    HEREDOC
+    "Color Codes:
+    Red = 1\t\tYellow = 4
+    Green = 2\t\tCyan = 5
+    Blue = 3\t\tPurple = 6
+    "
   end
 
   def display_incorrect_input
