@@ -38,6 +38,7 @@ module GameDisplay
     end
 
     exit unless retry_game?
+    play_mastermind
   end
 
   def breaker_gameplay_content
