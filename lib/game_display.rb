@@ -26,10 +26,7 @@ module GameDisplay
   end
 
   def breaker_gameplay
-    until available_moves.zero? || winner?
-      clear_screen
-      breaker_gameplay_content
-    end
+    breaker_gameplay_content until available_moves.zero? || winner?
 
     if winner?
       display_winner_if_won
@@ -42,6 +39,7 @@ module GameDisplay
   end
 
   def breaker_gameplay_content
+    clear_screen
     puts display_color_numbers
 
     puts if display_guess_clue_array
