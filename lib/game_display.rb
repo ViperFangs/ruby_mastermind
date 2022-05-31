@@ -9,7 +9,7 @@ module GameDisplay
       @user_gameplay_choice = gets.chomp.to_i
     end
 
-    system('clear')
+    clear_screen
   end
 
   def valid_gameplay_choice?
@@ -26,34 +26,34 @@ module GameDisplay
   end
 
   def breaker_gameplay
-    breaker_game_content
-    breaker_game_loop
-  end
-
-  def breaker_game_content
-    puts display_color_numbers
-    puts 'The Computer has decided the Master Code'
-  end
-
-  def breaker_game_loop
     until available_moves.zero? || winner?
-      system('clear')
-      puts display_color_numbers
-
-      puts if display_guess_clue_array
-      display_available_moves
-      puts
-
-      input_current_guess
-      generate_current_clue
-      display_current_clue
-      return if display_winner_if_won
-
+      clear_screen
+      breaker_gameplay_content
     end
+
+    if winner?
+      display_winner_if_won
+    else
+      display_out_of_moves
+    end
+
+    exit unless retry_game?
+  end
+
+  def breaker_gameplay_content
+    puts display_color_numbers
+
+    puts if display_guess_clue_array
+    display_available_moves
+    puts
+
+    input_current_guess
+    generate_current_clue
+    display_current_clue
   end
 
   def display_guess_clue_array
-    return false if guess_clue_array.nil?
+    return false if guess_clue_array.empty?
 
     guess_clue_array.each do |hash|
       hash.each do |key, value|
@@ -90,12 +90,32 @@ module GameDisplay
   def display_winner_if_won
     return unless winner?
 
-    puts "\n\nYOU HAVE WON THE GAME"
+    clear_screen
+    puts "\nYOU HAVE WON THE GAME"
     puts "#{master_code.join} is the Master Code"
     true
   end
 
   def display_available_moves
     puts "Available Moves: #{available_moves}"
+  end
+
+  def display_out_of_moves
+    clear_screen
+    puts "\nThe Computer has Outsmarted you!"
+    puts "#{master_code.join} is the Master Code"
+  end
+
+  def clear_screen
+    system('clear')
+  end
+
+  def out_of_moves?
+    available_moves.zero?
+  end
+
+  def retry_game?
+    print "\nWould you like to retry the game? [y/n]: "
+    gets.chomp.downcase == 'y'
   end
 end
