@@ -18,12 +18,6 @@ class Game
     play_mastermind
   end
 
-  def default_values
-    self.user_gameplay_choice = -1
-    self.available_moves = 12
-    self.guess_clue_array = []
-  end
-
   def play_mastermind
     instruction_screen
     game_screen

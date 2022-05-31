@@ -82,4 +82,10 @@ module GameLogic
   def winner?
     user_guess_array == master_code
   end
+
+  def default_values
+    self.user_gameplay_choice = -1
+    self.available_moves = 12
+    self.guess_clue_array = []
+  end
 end
