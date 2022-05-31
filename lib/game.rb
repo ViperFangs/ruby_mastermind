@@ -19,6 +19,7 @@ class Game
   def play_mastermind
     generate_master_code
     default_values
+    clear_screen
     instruction_screen
     game_screen
   end
