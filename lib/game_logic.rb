@@ -87,5 +87,9 @@ module GameLogic
     self.user_gameplay_choice = -1
     self.available_moves = 12
     self.guess_clue_array = []
+    self.user_guess_array = []
+    self.return_clues = []
+    self.current_guess = []
+    self.current_clue = []
   end
 end

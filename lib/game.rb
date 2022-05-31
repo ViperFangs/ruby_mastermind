@@ -13,12 +13,12 @@ class Game
   attr_accessor :user_gameplay_choice
 
   def initialize
-    generate_master_code
-    default_values
     play_mastermind
   end
 
   def play_mastermind
+    generate_master_code
+    default_values
     instruction_screen
     game_screen
   end
