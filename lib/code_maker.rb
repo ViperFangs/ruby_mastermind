@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # Code Maker Gameplay Style
 module CodeMaker
   attr_accessor :user_master_code, :current_master_code, :possible_guesses, :range_array,
-                :current_computer_clue_array, :computed_clues, :computed_missed_array, 
+                :current_computer_clue_array, :computed_clues, :computed_missed_array,
                 :modified_computer_guess_array, :current_computer_guess_array
 
   def maker_gameplay
@@ -15,6 +17,18 @@ module CodeMaker
     remove_different_possible_guesses
 
     computer_gameplay until available_moves.zero? || winner?
+    final_game_screen
+  end
+
+  def final_game_screen
+    computer_gameplay
+
+    if winner?
+      puts "The Computer succesfully cracked your Master Code."
+      puts current_computer_guess_array.to_s
+    else
+      puts "\nImpossible"
+    end
 
     exit unless retry_game?
     play_mastermind
@@ -50,7 +64,6 @@ module CodeMaker
 
   def generate_computer_current_clue(guess_array = [1, 1, 2, 2])
     self.current_computer_guess_array = guess_array
-    p guess_array
     self.current_computer_clue_array = generate_clue(guess_array.join)
     self.available_moves -= 1
   end
