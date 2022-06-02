@@ -19,7 +19,7 @@ module GameDisplay
   def game_screen
     case user_gameplay_choice
     when 1
-      # maker_gameplay
+      maker_gameplay
     when 2
       breaker_gameplay
     end
