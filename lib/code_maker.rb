@@ -52,7 +52,7 @@ module CodeMaker
   end
 
   def remove_different_possible_guesses
-    possible_guesses.select do |array|
+    possible_guesses.select! do |array|
       self.computed_clues = []
       self.computed_missed_array = []
       self.modified_computer_guess_array = current_computer_guess_array[0..current_computer_guess_array.length]
