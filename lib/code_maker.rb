@@ -15,6 +15,9 @@ module CodeMaker
     remove_different_possible_guesses
 
     computer_gameplay until available_moves.zero? || winner?
+
+    exit unless retry_game?
+    play_mastermind
   end
 
   def input_user_master_code
@@ -36,17 +39,19 @@ module CodeMaker
 
   def computer_gameplay
     clear_screen
-
+    puts "The Master Code is: #{master_code}\n\n"
     puts if display_guess_clue_array
     display_available_moves
     puts
 
     generate_computer_current_clue(possible_guesses[0])
+    # possible_guesses.delete_at(0)
     remove_different_possible_guesses
   end
 
   def generate_computer_current_clue(guess_array = [1, 1, 2, 2])
     self.current_computer_guess_array = guess_array
+    p guess_array
     self.current_computer_clue_array = generate_clue(guess_array.join)
     self.available_moves -= 1
   end
