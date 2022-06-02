@@ -28,7 +28,7 @@ module GameLogic
   def valid_input?(user_guess)
     convert_user_guess(user_guess)
     user_guess_array.length == MASTER_CODE_LENGTH && user_guess_array.all? do |number|
-      number.is_a?(Integer) && number.between?(1,6)
+      number.is_a?(Integer) && number.between?(1, 6)
     end
   end
 
