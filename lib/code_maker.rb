@@ -45,7 +45,6 @@ module CodeMaker
     puts
 
     generate_computer_current_clue(possible_guesses[0])
-    # possible_guesses.delete_at(0)
     remove_different_possible_guesses
   end
 
@@ -64,7 +63,7 @@ module CodeMaker
       computed_clue_handler(array)
       computed_missed_array_handler
 
-      computed_clues == current_computer_clue_array
+      computed_clues.sort == current_computer_clue_array.sort
     end
   end
 
