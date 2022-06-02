@@ -5,8 +5,7 @@ module GameLogic
   private
 
   attr_accessor :return_clues, :current_guess, :current_clue, :user_guess_array, :guess_clue_array, :available_moves,
-                :missed_array, :modified_guess_array
-  attr_reader :master_code
+                :missed_array, :modified_guess_array, :master_code
 
   MASTER_CODE_LENGTH = 4
 
@@ -28,7 +27,9 @@ module GameLogic
 
   def valid_input?(user_guess)
     convert_user_guess(user_guess)
-    user_guess_array.length == MASTER_CODE_LENGTH && user_guess_array.all? { |number| number.is_a?(Integer) }
+    user_guess_array.length == MASTER_CODE_LENGTH && user_guess_array.all? do |number|
+      number.is_a?(Integer) && number.between?(1,6)
+    end
   end
 
   def convert_user_guess(user_guess)
