@@ -51,18 +51,6 @@ module GameDisplay
     display_current_clue
   end
 
-  def display_guess_clue_array
-    return false if guess_clue_array.empty?
-
-    guess_clue_array.each do |hash|
-      hash.each do |key, value|
-        print "#{key}: #{value}\t\t"
-      end
-
-      puts
-    end
-  end
-
   def input_current_guess
     puts 'Enter your guess and the computer will reveal a clue'
     puts "Example Guess: Type \'1 3 5 2\' without the \'\' for \'Red Blue Cyan Green\'"

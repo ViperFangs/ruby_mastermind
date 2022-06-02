@@ -93,4 +93,21 @@ module GameLogic
     self.current_guess = []
     self.current_clue = []
   end
+
+  def generate_possible_guesses_array
+    self.range_array = [1, 2, 3, 4, 5, 6]
+    self.possible_guesses = range_array.repeated_permutation(4).to_a
+  end
+
+  def display_guess_clue_array
+    return false if guess_clue_array.empty?
+
+    guess_clue_array.each do |hash|
+      hash.each do |key, value|
+        print "#{key}: #{value}\t\t"
+      end
+
+      puts
+    end
+  end
 end
